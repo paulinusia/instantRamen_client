@@ -3,7 +3,7 @@
 
 
 
-
+<v-container>
  <!-- GET METHODS FOR PRODUCT -->
     <v-row 
     justify="space-around"
@@ -56,20 +56,13 @@
     </v-row>
 
 
-   
-
-
-
- 
-
- 
 
 <!-- POST/PUT/DELETE FOR AXIOS?? -->
 <v-form>
 
 </v-form>
 
-
+</v-container>
     </div>
 </template>
 
