@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="search">
     <h1>Get info page</h1>
     <h3> Search product information </h3>
     <product/>
@@ -15,10 +15,10 @@
 </template>
 
 <script>
-import Product from '../components/search/Product.vue'
-import Purchase from '../components/search/Purchase.vue'
-import Customer from '../components/search/Customer.vue'
-import Partner from '../components/search/Partner.vue'
+import Product from '@/components/search/Product.vue'
+import Purchase from '@/components/search/Purchase.vue'
+import Customer from '@/components/search/Customer.vue'
+import Partner from '@/components/search/Partner.vue'
 
 
 export default {
