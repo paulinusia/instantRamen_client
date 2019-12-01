@@ -29,7 +29,7 @@
           <v-flex>
               <p> partner info: {{partnerID}} </p>
           <v-flex>
-            <v-btn @click="getProductByPartnerID"> Return prodcuts by partner ID </v-btn>
+            <v-btn @click="getProductByPartnerID"> Return products by partner ID </v-btn>
           </v-flex>
           </v-flex>
       </v-card>
