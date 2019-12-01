@@ -1,12 +1,15 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> | 
-      <router-link to="/search">Search Resources</router-link> | 
-       <router-link to="/buy">Buy Products</router-link> | 
-        <router-link to="/orderinfo">Check Order Status</router-link>
+      <router-link to="/" exact>Home</router-link> | 
+      <router-link to="/search" exact >Search Resources</router-link> | 
+       <router-link to="/buy" exact>Buy Products</router-link> | 
+        <router-link to="/orderinfo" exact>Check Order Status</router-link>
+
     </div>
-    <router-view/>
+   <keep-alive>
+    <router-view></router-view>
+  </keep-alive>
   </div>
 </template>
 
