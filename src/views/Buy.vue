@@ -1,7 +1,7 @@
 <template>
     
 <div>
-    <h2> Buy a product/ display list of all product upon render here </h2>
+    <h2> Order Products </h2>
     <buy/>
 </div>
 </template>
