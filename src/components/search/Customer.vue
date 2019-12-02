@@ -38,7 +38,7 @@
 
 <!-- POST/PUT/DELETE FOR AXIOS?? -->
 <v-form>
-
+  <input v-model="message" placeholder="FirstName">
 </v-form>
 
 </v-container>

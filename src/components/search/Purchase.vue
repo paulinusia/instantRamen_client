@@ -94,15 +94,8 @@ export default {
      axios.get('http://localhost:8081/purchaseservice/customerpurchases/'+ this.customerID)
               .then(response => {this.purchases = console.log(response.data)});
     //console.log(customerID);
-
-
-},
-
-
-
-
-
-},
+  },
+  },
 }
 
 </script>
