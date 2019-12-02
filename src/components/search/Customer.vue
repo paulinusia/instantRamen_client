@@ -69,8 +69,12 @@ export default {
      axios.get('http://localhost:8081/customerservice/customer/'+ this.customerID)
               .then(response => {this.customer = console.log(response.data)});
     //console.log(customerID);
-  }
-  
+    },
+    createCustomer() {
+      axios
+      .get('http://localhost:8081/customerservice/customer/'+ this.customerRequest)
+      .then(response => {this.customer = console.log(response.data)});
+    }
 },
 }
 

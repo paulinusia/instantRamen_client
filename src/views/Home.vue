@@ -39,7 +39,14 @@ export default {
   name: 'home',
   components: {
 
-  }
+  },
+  data() {
+    return {
+      firstName: null,
+      lastName: null,
+      phoneNumber: null,
+    };
+  },
 }
 </script>
 <style lang="scss">
