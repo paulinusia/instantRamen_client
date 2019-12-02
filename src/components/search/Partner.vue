@@ -66,12 +66,12 @@ export default {
       getPartners() {
      axios
       .get('http://localhost:8081/partnerservice/partners/')
-      .then(response => (this.partner = response));
+      .then(response => {this.partner = console.log(response)});
     },
     getPartnerByID(partnerID){  
      axios.get('http://localhost:8081/partnerservice/partner'+ this.partnerID)
-              .then(response => (this.partner = response.data));
-    console.log(partnerID);
+              .then(response => {this.partner = console.log(response.data)});
+    //console.log(partnerID);
   }
   
 },
