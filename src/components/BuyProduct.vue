@@ -31,7 +31,7 @@ import axios from 'axios'
 export default {
 data(){
   return{
-  fk_purchasepayment: 109,
+  fk_purchase_payment: 109,
   fk_purchase_owner:104,
   fk_address:101,
   purchasestatus: 'Ordered',
@@ -48,7 +48,7 @@ methods:{
                     purchasestatus: this.purchasestatus,
                     purchasedetail: this.purchasedetail,
                     fk_product: this.fk_product,
-                    fk_purchase_payment: this.payment,
+                    fk_purchase_payment: this.fk_purchase_payment,
                     fk_purchase_owner: this.fk_purchase_owner,
                     fk_address: this.fk_address,
                 })
