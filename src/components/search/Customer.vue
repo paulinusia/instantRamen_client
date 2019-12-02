@@ -79,6 +79,6 @@ export default {
 <style scoped>
 .row{
   margin-top: 5%;
-  text-align:left;
+  text-align:center;
 }
 </style>

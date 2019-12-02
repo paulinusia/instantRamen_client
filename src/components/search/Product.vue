@@ -89,22 +89,22 @@ export default {
     getProducts() {
      axios
       .get('http://localhost:8081/productservice/products/')
-      .then(response => (this.product = response));
+      .then(response => {this.product = console.log(response)});
     },
     getProductByID(productID){  
      axios.get('http://localhost:8081/productservice/product/'+ this.productID)
-              .then(response => (this.product = response.data));
-    console.log(productID);
+              .then(response => {this.product = console.log(response.data)});
+    //console.log(productID);
   },
   getProductByPartnerID(partnerID){  
      axios.get('http://localhost:8081/productservice/partnerproducts/'+ this.partnerID)
-              .then(response => (this.partnerProducts = response.data));
-    console.log(partnerID);
+              .then(response => {this.partnerProducts = console.log(response.data)});
+    //console.log(partnerID);
   },
   getProductByName(productName){  
      axios.get('http://localhost:8081/productservice/products/'+ this.productName)
-              .then(response => (this.productName = response.data));
-    console.log(ProductName);
+              .then(response => {this.productName = console.log(response.data)});
+    //console.log(ProductName);
 
 
 },
