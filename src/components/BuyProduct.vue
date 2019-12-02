@@ -8,14 +8,19 @@
                         <form @submit="formSubmit">
                         <strong>Product ID</strong>
                         <input type="text" class="form-control" v-model="fk_product">
+
                         <strong>Purchase Detail:</strong>
                         <textarea class="form-control" v-model="purchasedetail"></textarea>
     
                         <button class="btn btn-success">Submit</button>
                         </form>
+
                         <strong>Ordering Result:</strong>
                         <pre>
                         {{output}}
+                        </pre>
+                        <pre>
+                          {{product}}
                         </pre>
                     </div>
                 </div>
@@ -31,26 +36,29 @@ import axios from 'axios'
 export default {
 data(){
   return{
-  fk_purchasepayment: 109,
+  fk_purchase_payment: 109,
   fk_purchase_owner:104,
   fk_address:101,
   purchasestatus: 'Ordered',
   purchasedetail: '',
   fk_product: '',
-  output: ''
+  output: '',
+  product: ''
   };
 },
 methods:{
   formSubmit(e) {
+                window.alert('test');
                 e.preventDefault();
                 let currentObj = this;
-                this.axios.post('http://localhost:8081/purchaseservice/purchase', {
-                    purchasestatus: this.purchasestatus,
+                axios.post('http://localhost:8081/purchaseservice/purchase', {
                     purchasedetail: this.purchasedetail,
-                    fk_product: this.fk_product,
-                    fk_purchase_payment: this.payment,
-                    fk_purchase_owner: this.fk_purchase_owner,
+                    purchasestatus: this.purchasestatus,
                     fk_address: this.fk_address,
+                    fk_purchase_owner: this.fk_purchase_owner,
+                    fk_purchase_payment: this.fk_purchase_payment,
+                    fk_product: this.fk_product,
+
                 })
                 .then(function (response) {
                     currentObj.output = response.data;
@@ -62,6 +70,9 @@ methods:{
         
 
 },
+ mounted() {
+            console.log('loaded')
+        },
 created(){
      
      axios
