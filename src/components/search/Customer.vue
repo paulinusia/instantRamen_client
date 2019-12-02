@@ -72,7 +72,13 @@ export default {
     },
     createCustomer() {
       axios
-      .get('http://localhost:8081/customerservice/customer/'+ this.customerRequest, {
+      .post('http://localhost:8081/customerservice/customer/', {
+        {
+          firstname = this.firstname;
+          lastname = this.lastname;
+          email = this.email;
+          phonenumber = this.phonenumber;
+        }
         headers: {
           'Content-Type': 'application/json'
         }
