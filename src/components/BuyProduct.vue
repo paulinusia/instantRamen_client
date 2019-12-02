@@ -19,6 +19,7 @@
                         <pre>
                         {{output}}
                         </pre>
+                        <h1> product info </h1>
                         <pre>
                           {{product}}
                         </pre>
@@ -53,13 +54,12 @@ methods:{
                 let currentObj = this;
                 axios.post('http://localhost:8081/purchaseservice/purchase', {
                     purchasedetail: this.purchasedetail,
-<<<<<<< HEAD
+
                     purchasestatus: this.purchasestatus,
-=======
+
                     fk_product: this.fk_product,
                     fk_purchase_payment: this.fk_purchase_payment,
                     fk_purchase_owner: this.fk_purchase_owner,
->>>>>>> 8f8d6f2c92a0cf1552bba1b10ae781f6816c0019
                     fk_address: this.fk_address,
                     fk_purchase_owner: this.fk_purchase_owner,
                     fk_purchase_payment: this.fk_purchase_payment,
