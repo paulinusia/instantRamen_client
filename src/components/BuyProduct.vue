@@ -57,6 +57,7 @@ methods:{
 
                     purchasestatus: this.purchasestatus,
 
+                    purchase: {
                     fk_product: this.fk_product,
                     fk_purchase_payment: this.fk_purchase_payment,
                     fk_purchase_owner: this.fk_purchase_owner,
@@ -64,7 +65,7 @@ methods:{
                     fk_purchase_owner: this.fk_purchase_owner,
                     fk_purchase_payment: this.fk_purchase_payment,
                     fk_product: this.fk_product,
-
+                    }
                 })
                 .then(function (response) {
                     currentObj.output = response.data;
