@@ -75,14 +75,16 @@ export default {
       .get('http://localhost:8081/customerservice/customer/'+ this.customerRequest)
       .then(response => {this.customer = console.log(response.data)});
     }
-},
+  },
 }
 
 </script>
 
 <style scoped>
 .row{
-  margin-top: 5%;
+  margin-top: 0%;
+  margin-bottom: 5%;
+  margin-left: 25%;
   text-align:center;
 }
 </style>

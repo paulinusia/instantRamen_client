@@ -80,8 +80,10 @@ export default {
 </script>
 
 <style scoped>
-.row{
-  margin-top: 5%;
-  text-align:left;
+.row {
+  margin-top: 0%;
+  margin-bottom: 5%;
+  margin-left: 25%;
+  text-align: center;
 }
 </style>

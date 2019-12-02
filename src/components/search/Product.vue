@@ -120,7 +120,9 @@ export default {
 
 <style scoped>
 .row{
-  margin-top: 5%;
-  text-align:left;
+  margin-top: 0%;
+  margin-bottom: 5%;
+  margin-left: 5%;
+  text-align: center;
 }
 </style>
