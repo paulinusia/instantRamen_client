@@ -2,31 +2,38 @@
 <div>
    <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+              
                    
-                    <div class="card-body">
-                        <form @submit="formSubmit">
-                        <strong>Product ID</strong>
-                        <input type="text" class="form-control" v-model="fk_product">
+                        <v-form  class="form" @submit="formSubmit">
+                       
+                        <strong >Product ID</strong>
+                      
 
-                        <strong>Purchase Detail:</strong>
-                        <textarea class="form-control" v-model="purchasedetail"></textarea>
-    
-                        <button class="btn btn-success">Submit</button>
-                        <v-btn large color="primary">Submit</v-btn>
-                        </form>
+                         <v-text-field
+                        v-model="fk_product"
+                        label="ID of product you want to buy" required ></v-text-field>
+                    
+                        <strong >Purchase Detail: </strong>
+                        <v-text-field
+                        v-model="purchasedetail"
+                        label="Purchase Details" required ></v-text-field>
 
+                        <v-btn x-large color="success" type="submit" dark>Submit</v-btn>
+                       
+                        </v-form>
+                        <div class = "results">
                         <strong>Ordering Result:</strong>
                         <pre>
                         {{output}}
                         </pre>
-                        <h1> product info </h1>
-                        <pre>
+                        <strong> product info: </strong>
+                        <p>
                           {{product}}
-                        </pre>
+                        </p>
+                        </div>
                     </div>
-                </div>
-            </div>
+              
+        
         </div>
     </div>
 
@@ -94,4 +101,19 @@ created(){
 
 <style scoped>
 
+.form {
+  
+  margin:0 auto; 
+  width:800px;
+  border-style: dotted;
+  border-width: 1px;
+  padding: 5%;
+  position: abosolute;
+  margin-left: 35%;
+}
+
+
+.results{
+  margin-top: 10%;
+}
 </style>
