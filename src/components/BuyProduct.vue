@@ -53,18 +53,13 @@ methods:{
                 e.preventDefault();
                 let currentObj = this;
                 axios.post('http://localhost:8081/purchaseservice/purchase', {
-                    purchasedetail: this.purchasedetail,
-
-                    purchasestatus: this.purchasestatus,
-
-                    purchase: {
-                    fk_product: this.fk_product,
-                    fk_purchase_payment: this.fk_purchase_payment,
-                    fk_purchase_owner: this.fk_purchase_owner,
-                    fk_address: this.fk_address,
-                    fk_purchase_owner: this.fk_purchase_owner,
-                    fk_purchase_payment: this.fk_purchase_payment,
-                    fk_product: this.fk_product,
+                    Purchase:{
+                        purchaseDetail: this.purchasedetail,
+                        purchaseStatus: this.purchasestatus,
+                        productID: this.fk_product,
+                        purchasePaymentID: this.fk_purchase_payment,
+                        purchaseOwner: this.fk_purchase_owner,
+                        addressID: this.fk_address
                     }
                 })
                 .then(function (response) {
