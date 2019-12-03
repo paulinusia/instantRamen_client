@@ -27,6 +27,8 @@
     <p> </p>
     <input v-model="message" placeholder="Email Address">
     <p> </p>
+    <input v-model="message" placeholder="Phone Number">
+    <p> </p>
     <button class="btn btn-success">Submit</button>
 
     <!--<p>Message is: {{ message }}</p>-->
