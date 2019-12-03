@@ -26,7 +26,7 @@
                         <pre>
                         {{output}}
                         </pre>
-                        <strong> product info: </strong>
+                        <strong> Product Info: </strong>
                         <p>
                           {{product}}
                         </p>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1> Ability to get order status/cancel order here</h1>
+        <h1> Check the status of your order</h1>
     </div>
 </template>
 

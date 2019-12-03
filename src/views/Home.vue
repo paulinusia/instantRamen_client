@@ -4,6 +4,7 @@
     <!--<h1> Create customer ??????? is that needed here </h1>-->
     <p> </p>
     <h1>Signup</h1>
+    <customer/> 
     <!--<hr>
     <div class="form-group">
       <label for="firstName">First Name</label>
@@ -20,37 +21,77 @@
     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
       <button class="btn btn-primary" @click.prevent="submitted">Submit!</button>
     </div>-->
+ <v-form  class="form" @submit="formSubmit">
+                       
+                        <strong >New Customer</strong>
+                      
 
-    <input v-model="message" placeholder="First Name">
-    <p> </p>
-    <input v-model="message" placeholder="Last Name">
-    <p> </p>
-    <input v-model="message" placeholder="Email Address">
-    <p> </p>
-    <input v-model="message" placeholder="Phone Number">
-    <p> </p>
-    <button class="btn btn-success">Submit</button>
-
+                         <v-text-field
+                        v-model="firstname"
+                        label="first name" required ></v-text-field>
+                        <v-text-field
+                        v-model="lastname"
+                        label="last name" required ></v-text-field>
+                         <v-text-field
+                        v-model="email"
+                        label="email" required ></v-text-field>
+                        <v-text-field
+                        v-model="phonenumber"
+                        label="phone number" required ></v-text-field>
+                    
+                        <v-btn x-large color="success" type="submit" dark>Submit</v-btn>
+                       
+                        </v-form>
+                        <div class = "results">
+                        <strong>New Customer Result:</strong>
+                        <pre>
+                        {{output}}
+                        </pre>
     <!--<p>Message is: {{ message }}</p>-->
+  </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-
+import Customer from '@/components/search/Customer.vue'
 
 export default {
   name: 'home',
   components: {
-
+    //'customer': Customer,
   },
   data() {
     return {
-      firstName: null,
-      lastName: null,
-      phoneNumber: null,
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      email: ''
     };
   },
+  methods:{
+    formSubmit(e) {
+                window.alert('test');
+                e.preventDefault();
+                let currentObj = this;
+                axios.post('http://localhost:8081/customerservice/customer', {
+                    Customer:{
+                        irstName: this.firstName,
+                        lastName: this.lastName,
+                        email: this.email,
+                        phoneNumber: this.phoneNumber,
+                        
+                    }
+                })
+                .then(function (response) {
+                    currentObj.output = response.data;
+                })
+                .catch(function (error) {
+                    currentObj.output = error;
+                });
+            }
+        
+  }
 }
 </script>
 <style lang="scss">
