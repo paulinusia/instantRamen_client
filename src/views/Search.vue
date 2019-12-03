@@ -1,14 +1,21 @@
 <template>
   <div class="search">
-    <h1>Get info page</h1>
-    <h3> Search product information </h3>
-    <product/>
-     <h3> Search purchase information </h3>
+    <v-card>
+    <v-card-title> Search Product Information </v-card-title>
+      <product/>
+    </v-card>
+    <v-card>
+     <v-card-title> Search purchase information </v-card-title>
      <purchase />
-      <h3> Search Customer information </h3>
+     </v-card>
+     <v-card>
+      <v-card-title> Search Customer information </v-card-title>
       <customer />
-      <h3> Search Partner information </h3>
+      </v-card>
+      <v-card>
+      <v-card-title> Search Partner information </v-card-title>
       <partner />
+      </v-card>
 
 
   </div>
