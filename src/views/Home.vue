@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 // @ is an alias to /src
 import Customer from '@/components/search/Customer.vue'
 
