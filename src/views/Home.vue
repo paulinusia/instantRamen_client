@@ -27,16 +27,16 @@
                       
 
                          <v-text-field
-                        v-model="firstname"
+                        v-model="firstName"
                         label="first name" required ></v-text-field>
                         <v-text-field
-                        v-model="lastname"
+                        v-model="lastName"
                         label="last name" required ></v-text-field>
                          <v-text-field
                         v-model="email"
                         label="email" required ></v-text-field>
                         <v-text-field
-                        v-model="phonenumber"
+                        v-model="phoneNumber"
                         label="phone number" required ></v-text-field>
                     
                         <v-btn x-large color="success" type="submit" dark>Submit</v-btn>
@@ -77,7 +77,7 @@ export default {
                 let currentObj = this;
                 axios.post('http://localhost:8081/customerservice/customer', {
                     Customer:{
-                        irstName: this.firstName,
+                        firstName: this.firstName,
                         lastName: this.lastName,
                         email: this.email,
                         phoneNumber: this.phoneNumber,
