@@ -67,7 +67,8 @@ export default {
       firstName: '',
       lastName: '',
       phoneNumber: '',
-      email: ''
+      email: '',
+      output: ''
     };
   },
   methods:{

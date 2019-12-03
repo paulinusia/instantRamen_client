@@ -4,7 +4,7 @@
       <router-link to="/" exact>Home</router-link> | 
       <router-link to="/search" exact >Search Resources</router-link> | 
        <router-link to="/buy" exact>Buy Products</router-link> | 
-        <router-link to="/orderinfo" exact>Check Order Status</router-link>
+       
 
     </div>
    <keep-alive>
