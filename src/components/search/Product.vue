@@ -74,9 +74,11 @@
             Description:{{product.productDescription}}
             <br />
             Partner ID :{{product.partnerID}}
-        
+            
           </div>
+            </li>
 
+            
            <h1> Partner By ID: </h1>
       <br />
           <div v-if="product">
