@@ -58,6 +58,43 @@
 
     </v-row>
 
+     <strong>All Products:</strong>
+       
+          <li v-for="product in products" :key="product.id">
+          <br />
+          <div v-if="product">
+            Product
+            <br />
+            id:{{product.id}}
+            <br />
+            Name:{{product.productName}}
+            <br />
+            Cost :{{product.productCost}}
+            <br />
+            Description:{{product.productDescription}}
+            <br />
+            Partner ID :{{product.partnerID}}
+        
+          </div>
+
+           <h1> Partner By ID: </h1>
+      <br />
+          <div v-if="product">
+            Product
+            <br />
+            id:{{product.id}}
+            <br />
+            Name:{{product.productName}}
+            <br />
+            Cost:{{product.productCost}}
+            <br />
+            Description:{{product.productDescription}}
+            <br />
+            Partner ID:{{product.partnerID}}
+        
+          </div>
+
+
 
 
 <!-- POST/PUT/DELETE FOR AXIOS?? -->
@@ -83,9 +120,8 @@ export default {
       productID: null,
       PartnerProducts: null,
       partnerID: null,
-      productName: null,
-      
-
+      productName: null, 
+      products: ''
       
     };
   },
@@ -96,7 +132,7 @@ export default {
     getProducts() {
      axios
       .get('http://localhost:8081/productservice/products/')
-      .then(response => {this.product = console.log(response)});
+      .then(response => {this.products = console.log(response)});
     },
     getProductByID(productID){  
      axios.get('http://localhost:8081/productservice/product/'+ this.productID)
