@@ -2,7 +2,7 @@
 
 
 <template>
-<div class="purchase">
+<div class="partner">
 
 <Nav />
 
@@ -25,8 +25,7 @@
           </v-flex>
       </v-card>
 
-     
-
+    
 
        <v-card >
        <v-flex>
@@ -37,6 +36,48 @@
 
     </v-row>
 
+    
+  <div>
+   
+       <strong>All Partners:</strong>
+       
+          <li v-for="partner in partners" :key="partner.id">
+          <br />
+          <div v-if="partner">
+            Partner
+            <br />
+            id:{{partner.id}}
+            <br />
+            Partner Name:{{partner.partnerName}}
+            <br />
+            Partner Type:{{partner.partnerType}}
+            <br />
+            Description:{{partner.description}}
+            <br />
+            Phone Number :{{partner.phoneNumber}}
+        
+          </div>
+
+
+  </li>
+
+  </div>
+    <h1> Partner By ID: </h1>
+      <br />
+          <div v-if="partner">
+            Partner
+            <br />
+            id:{{partner.id}}
+            <br />
+            Partner Name:{{partner.partnerName}}
+            <br />
+            Partner Type:{{partner.partnerType}}
+            <br />
+            Description:{{partner.description}}
+            <br />
+            Phone Number :{{partner.phoneNumber}}
+        
+          </div>
 
 
 <!-- POST/PUT/DELETE FOR AXIOS?? -->
@@ -59,17 +100,19 @@ export default {
     return {
       isShowing: false,
       partnerID: null,
-      partner: null, 
+      partner: '', 
+      partners: '',
     };
   },
   components:{
     Nav
   },
   methods: {
+    //logs all parn
       getPartners() {
      axios
       .get('http://localhost:8081/partnerservice/partners/')
-      .then(response => {this.partner = console.log(response)});
+      .then(response => {this.partners = console.log(response)});
     },
     getPartnerByID(partnerID){  
      axios.get('http://localhost:8081/partnerservice/partner'+ this.partnerID)
