@@ -23,7 +23,7 @@
     </div>-->
  <v-form  class="form" @submit="formSubmit">
                        
-                        <strong >New Customer</strong>
+                        <strong>New Customer</strong>
                       
 
                          <v-text-field
