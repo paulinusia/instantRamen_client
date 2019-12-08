@@ -1,5 +1,8 @@
 <template>
   <div class="search">
+      <Nav/>
+    
+   
     <v-card>
     <v-card-title> Search Product Information </v-card-title>
       <product/>
@@ -26,6 +29,7 @@ import Product from '@/components/search/Product.vue'
 import Purchase from '@/components/search/Purchase.vue'
 import Customer from '@/components/search/Customer.vue'
 import Partner from '@/components/search/Partner.vue'
+import Nav from '@/components/search/Nav.vue'
 
 
 export default {
@@ -36,7 +40,8 @@ export default {
     Product,
     Purchase,
     Customer,
-    Partner
+    Partner,
+    Nav
   }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
-<div class="purchase">
+<div class="customer">
 
 
-
+<Nav />
 <v-container>
  <!-- GET METHODS FOR PRODUCT -->
     <v-row 
@@ -48,7 +48,7 @@
 
 
 <script>
-
+import Nav from '@/components/search/Nav.vue'
 const axios = require('axios');
 
 export default {
@@ -58,6 +58,9 @@ export default {
       customerID: null,
       customer: null, 
     };
+  },
+   components: {
+    Nav
   },
   methods: {
       getCustomers() {
@@ -86,6 +89,7 @@ export default {
       .then(response => {this.customer = console.log(response.data)});
     }
   },
+ 
 }
 
 </script>

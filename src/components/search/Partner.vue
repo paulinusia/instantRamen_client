@@ -4,7 +4,7 @@
 <template>
 <div class="purchase">
 
-
+<Nav />
 
 <v-container>
  <!-- GET METHODS FOR PRODUCT -->
@@ -53,7 +53,7 @@
 <script>
 
 const axios = require('axios');
-
+import Nav from '@/components/search/Nav.vue'
 export default {
   data() {
     return {
@@ -61,6 +61,9 @@ export default {
       partnerID: null,
       partner: null, 
     };
+  },
+  components:{
+    Nav
   },
   methods: {
       getPartners() {

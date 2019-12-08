@@ -24,7 +24,28 @@ const routes = [
     path: '/orderinfo',
     name: 'orderinfo',
     component: () => import('../views/OrderInfo.vue')
-  }
+  },
+  {
+    path: '/search/product',
+    name: 'product',
+    component: () => import('../components/search/Product.vue')
+  },
+  {
+    path: '/search/purchase',
+    name: 'purchase',
+    component: () => import('../components/search/Purchase.vue')
+  },
+  {
+    path: '/search/customer',
+    name: 'customer',
+    component: () => import('../components/search/Customer.vue')
+  },
+  {
+    path: '/search/partner',
+    name: 'partner',
+    component: () => import('../components/search/Partner.vue')
+  },
+ 
 ]
 
 

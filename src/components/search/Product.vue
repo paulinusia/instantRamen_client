@@ -2,7 +2,7 @@
 <div class="product">
 
 
-
+<Nav />
 <v-container>
  <!-- GET METHODS FOR PRODUCT -->
     <v-row 
@@ -40,6 +40,9 @@
         </v-flex>
         <v-flex>
           <p> product name: {{productName}} </p>
+          <pre>
+            {{product}}
+          </pre>
         </v-flex>
         <v-flex>
           <v-btn @click="getProductByName"> Return products by Name </v-btn>
@@ -71,19 +74,23 @@
 <script>
 
 const axios = require('axios');
-
+import Nav from '@/components/search/Nav.vue'
 export default {
   data() {
     return {
       isShowing: false,
-      product: null,
+      product: '',
       productID: null,
       PartnerProducts: null,
       partnerID: null,
       productName: null,
+      
 
       
     };
+  },
+  components:{
+    Nav
   },
   methods: {
     getProducts() {

@@ -2,7 +2,7 @@
 <div class="purchase">
 
 
-
+<Nav />
 <v-container>
  <!-- GET METHODS FOR PRODUCT -->
     <v-row 
@@ -66,6 +66,7 @@
 <script>
 
 const axios = require('axios');
+import Nav from '@/components/search/Nav.vue'
 
 export default {
   data() {
@@ -78,6 +79,9 @@ export default {
 
       
     };
+  },
+  components: {
+    Nav
   },
   methods: {
     getPurchaseByID(purchaseID){  
