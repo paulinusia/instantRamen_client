@@ -137,7 +137,7 @@ export default {
       product: '',
       productID: null,
       partnerProducts: '',
-      partnerID: null,
+      partnerID: '',
       productName: null, 
       productNames: '',
       products: ''
@@ -160,13 +160,11 @@ export default {
     //console.log(productID);
   },
 
-  /*
+  
   getProductByPartnerID(partnerID){  
      axios.get('http://localhost:8081/productservice/partnerproducts/'+ this.partnerID)
-              .then(response => {
-              console.log(response)});
-    //console.log(partnerID);
-  }, */
+              .then(response => {console.log(response)})
+  }, 
 
   getProductByName(productName){  
      axios.get('http://localhost:8081/productservice/products/'+ this.productName)

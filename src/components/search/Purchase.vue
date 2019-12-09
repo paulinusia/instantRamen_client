@@ -130,12 +130,10 @@ export default {
               .then(response => {this.purchase = response.data});
   },
   getPurchaseByProductID(productID){  
-    
-     axios({
-       method: "get",
-       url: 'http://localhost:8081/purchaseservice/productpurchases/'+this.productID
-     }).then(response => {this.product = response.data,
-              console.log(response.data.Purchase)});
+      axios.get('http://localhost:8081/purchaseservice/customerpurchases/'+ this.productID)
+              .then(response => {this.purchases = response.data.Purchase,
+              console.log(response.data)
+              });
   },
   getPurchaseByCustomerID(customerID){  
      axios.get('http://localhost:8081/purchaseservice/customerpurchases/'+ this.customerID)

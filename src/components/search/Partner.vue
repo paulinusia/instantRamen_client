@@ -97,7 +97,7 @@ export default {
   data() {
     return {
       isShowing: false,
-      partnerID: null,
+      partnerID: '',
       partner: '', 
       partners: '',
     };
@@ -113,8 +113,8 @@ export default {
       .then(response => {this.partners = response.data.Partner});
     },
     getPartnerByID(partnerID){  
-     axios.get('http://localhost:8081/partnerservice/partner/'+ this.partnerID)
-              .then(response => {this.partner = response.data.Partner});
+     axios.get('http://localhost:8081/partnerservice/partnerproducts/'+ this.partnerID)
+              .then(response => {console.log(response)});
     //console.log(partnerID);
   }
   
