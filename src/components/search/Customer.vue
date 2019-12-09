@@ -33,6 +33,23 @@
       </v-card>
 
     </v-row>
+  
+           <h1> Customer By ID: </h1>
+      <br />
+          <div v-if="Customer">
+            Customer
+            <br />
+            id:{{product.id}}
+            <br />
+            Name:{{product.productName}}
+            <br />
+            Cost:{{product.productCost}}
+            <br />
+            Description:{{product.productDescription}}
+            <br />
+            Partner ID:{{product.partnerID}}
+        
+          </div>
 
 
 
@@ -56,7 +73,8 @@ export default {
     return {
       isShowing: false,
       customerID: null,
-      customer: null, 
+      customer: '', 
+      customers: ''
     };
   },
    components: {
@@ -70,7 +88,7 @@ export default {
     },
     getCustomerByID(customerID){  
      axios.get('http://localhost:8081/customerservice/customer/'+ this.customerID)
-              .then(response => {this.customer = console.log(response.data)});
+              .then(response => {this.customers = console.log(response.data)});
     //console.log(customerID);
     },
     createCustomer() {
