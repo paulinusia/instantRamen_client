@@ -78,24 +78,20 @@
             </ul>
 
 
-         
-      <br />
-          <div v-if="partnerProducts">
-            Products by partner ID
-            <br />
-            id:{{product.Product.id}}
-            <br />
-            Name:{{product.Product.productName}}
-            <br />
-            Cost:{{product.Product.cost}}
-            <br />
-            Description:{{product.Product.productDescription}}
-            <br />
-            Partner ID:{{product.Product.partnerId}}
-        
-          </div>
-
-
+     
+     <br />
+        <div class="getproductsbypartner" v-if="partnerProducts">
+<strong>All Customers:</strong>
+     
+  <ul v-for="product in partnerProducts" :key="product.id">
+  <br/> <br/>
+  <br />ID: {{product.id}}<br />
+  <br />Name: {{product.productName}} <br />
+   <br /> Cost :{{product.cost}} <br />
+    <br />Description:{{product.productDescription}} <br />
+ <br /> Partner ID :{{product.partnerId}} <br />
+  </ul>
+    </div>    
  
       <br />
           <div v-if="productNames">
@@ -151,19 +147,19 @@ export default {
     getProducts() {
      axios
       .get('http://localhost:8081/productservice/products/')
-      .then(response => {this.products = response.data.Product,
-      console.log('getting all products...')});
+      .then(response => {this.products = response.data.Product});
     },
     getProductByID(productID){  
      axios.get('http://localhost:8081/productservice/product/'+ this.productID)
-              .then(response => {this.product = response.data});
+              .then(response => {this.product = response.data
+              console.log(response)});
     //console.log(productID);
   },
 
   
   getProductByPartnerID(partnerID){  
      axios.get('http://localhost:8081/productservice/partnerproducts/'+ this.partnerID)
-              .then(response => {console.log(response)})
+              .then(response => {this.partnerProducts = response.data.Product})
   }, 
 
   getProductByName(productName){  
