@@ -59,20 +59,20 @@
 
 
   </div>
-    <h1> Partner By ID: </h1>
+
       <br />
           <div v-if="partner">
-            Partner
+            Partner by ID
             <br />
-            id:{{partner.id}}
+            id: {{partner.id}}
             <br />
-            Partner Name:{{partner.partnerName}}
+            Partner Name: {{partner.partnerName}}
             <br />
-            Partner Type:{{partner.partnerType}}
+            Partner Type: {{partner.partnerType}}
             <br />
-            Description:{{partner.description}}
+            Description: {{partner.description}}
             <br />
-            Phone Number :{{partner.phoneNumber}}
+            Phone Number: {{partner.phoneNumber}}
         
           </div>
 
@@ -113,8 +113,8 @@ export default {
       .then(response => {this.partners = response.data.Partner});
     },
     getPartnerByID(partnerID){  
-     axios.get('http://localhost:8081/partnerservice/partner'+ this.partnerID)
-              .then(response => {this.partner = console.log(response.data)});
+     axios.get('http://localhost:8081/partnerservice/partner/'+ this.partnerID)
+              .then(response => {this.partner = response.data.Partner});
     //console.log(partnerID);
   }
   
