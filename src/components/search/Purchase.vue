@@ -86,17 +86,17 @@ export default {
   methods: {
     getPurchaseByID(purchaseID){  
      axios.get('http://localhost:8081/purchaseservice/purchase/'+ this.purchaseID)
-              .then(response => {this.purchase = console.log(response.data)});
+              .then(response => {this.purchase = purchase});
     //console.log(purchaseID);
   },
   getPurchaseByProductID(productID){  
      axios.get('http://localhost:8081/purchaseservice/productpurchases/'+ this.productID)
-              .then(response => {this.purchases = console.log(response.data)});
+              .then(response => {this.purchases = purchases});
     //console.log(partnerID);
   },
   getPurchaseByCustomerID(customerID){  
      axios.get('http://localhost:8081/purchaseservice/customerpurchases/'+ this.customerID)
-              .then(response => {this.purchases = console.log(response.data)});
+              .then(response => {this.purchases = purchases});
     //console.log(customerID);
   },
   },

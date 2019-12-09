@@ -2,23 +2,7 @@
   <div class="search">
       <Nav/>
     
-   
-    <v-card>
-    <v-card-title> Search Product Information </v-card-title>
-      <product/>
-    </v-card>
-    <v-card>
-     <v-card-title> Search purchase information </v-card-title>
-     <purchase />
-     </v-card>
-     <v-card>
-      <v-card-title> Search Customer information </v-card-title>
-      <customer />
-      </v-card>
-      <v-card>
-      <v-card-title> Search Partner information </v-card-title>
-      <partner />
-      </v-card>
+   <h1> Select the items you would link to search above </h1>
 
 
   </div>

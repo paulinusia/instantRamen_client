@@ -95,11 +95,11 @@ export default {
       getCustomers() {
      axios
       .get('http://localhost:8081/customerservice/customers/')
-      .then(response => {this.customer = console.log(response)});
+      .then(response => {this.customer = customer});
     },
     getCustomerByID(customerID){  
      axios.get('http://localhost:8081/customerservice/customer/'+ this.customerID)
-              .then(response => {this.customers = console.log(response.data)});
+              .then(response => {this.customers = customers});
     //console.log(customerID);
     },
     createCustomer() {
@@ -115,7 +115,7 @@ export default {
           'Content-Type': 'application/json'
         }
       })
-      .then(response => {this.customer = console.log(response.data)});
+      .then(response => {this.customer = customer});
     }
   },
  
