@@ -33,15 +33,15 @@
       </v-card>
 
     </v-row>
-              <strong>All Customer:</strong>
+              <strong>All Customers:</strong>
        
-          <li v-for="customer in customers" :key="customer.id">
+          <ul v-for="customer in customers" :key="customer.id">
           <br />
          
-         <div v-if="customer">
+         <div v-if="customers">
             Customer
             <br />
-            id: {{customer.id}
+            id: {{customer.id}}
             <br />
             Name: {{customer.firstName}} {{customer.lastName}}
             <br />
@@ -50,14 +50,14 @@
             email:{{customer.email}}
           </div>
 
-            </li>
+            </ul>
   
            <h1> Customer By ID: </h1>
       <br />
           <div v-if="customer">
             Customer
             <br />
-            id: {{customer.id}
+            id: {{customer.id}}
             <br />
             Name: {{customer.firstName}} {{customer.lastName}}
             <br />
@@ -95,11 +95,11 @@ export default {
       getCustomers() {
      axios
       .get('http://localhost:8081/customerservice/customers/')
-      .then(response => {this.customer = customer});
+      .then(response => {this.customers = console.log(response.data)});
     },
     getCustomerByID(customerID){  
      axios.get('http://localhost:8081/customerservice/customer/'+ this.customerID)
-              .then(response => {this.customers = customers});
+              .then(response => {this.customer = console.log(response.data)});
     //console.log(customerID);
     },
     createCustomer() {

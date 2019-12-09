@@ -21,10 +21,7 @@ export default {
 
   },
   components: {
-    Product,
-    Purchase,
-    Customer,
-    Partner,
+    
     Nav
   }
 }

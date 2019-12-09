@@ -41,26 +41,29 @@
    
        <strong>All Partners:</strong>
        
-          <li v-for="partner in partners" :key="partner.id">
+          <li v-for="Partner in partners" :key="Partner.id">
           <br />
-          <div v-if="partner">
+         
             Partner
             <br />
-            id:{{partner.id}}
+            id:{{Partner.id}}
             <br />
-            Partner Name:{{partner.partnerName}}
+            Partner Name:{{Partner.partnerName}}
             <br />
-            Partner Type:{{partner.partnerType}}
+            Partner Type:{{Partner.partnerType}}
             <br />
-            Description:{{partner.description}}
+            Description:{{Partner.description}}
             <br />
-            Phone Number :{{partner.phoneNumber}}
+            Phone Number :{{Partner.phoneNumber}}
         
-          </div>
+  
 
 
   </li>
 
+  
+
+{{partners}}
   </div>
     <h1> Partner By ID: </h1>
       <br />
@@ -78,6 +81,19 @@
             Phone Number :{{partner.phoneNumber}}
         
           </div>
+
+
+          <div class="purchasebyCustomerID" v-if="purchases">
+     Purchase By Customer ID Information
+     <li v-for="purchase in purchases" :key="purchase.Purchase.id">
+  <br />id: {{purchase.Purchase.id}}<br />
+  <br /> Product id: {{purchase.Purchase.productID}}<br />
+  <br />Purchase Detail : {{purchase.Purchase.purchaseDetail}}<br />
+  <br />Purchase Status: {{purchase.Purchase.purchaseStatus}}<br />
+  <br />Address ID: {{purchase.Purchase.addressID}}<br />
+  <br />Purchase Owner: {{purchase.Purchase.purchaseOwner}}<br />
+  </li>
+    </div>    
 
 
 <!-- POST/PUT/DELETE FOR AXIOS?? -->
@@ -112,7 +128,7 @@ export default {
       getPartners() {
      axios
       .get('http://localhost:8081/partnerservice/partners/')
-      .then(response => {this.partners = console.log(response)});
+      .then(response => {this.partners = response.data});
     },
     getPartnerByID(partnerID){  
      axios.get('http://localhost:8081/partnerservice/partner'+ this.partnerID)

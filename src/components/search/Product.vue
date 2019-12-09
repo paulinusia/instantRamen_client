@@ -40,9 +40,7 @@
         </v-flex>
         <v-flex>
           <p> product name: {{productName}} </p>
-          <pre>
-            {{product}}
-          </pre>
+       
         </v-flex>
         <v-flex>
           <v-btn @click="getProductByName"> Return products by Name </v-btn>
@@ -57,6 +55,8 @@
       </v-card>
 
     </v-row>
+
+
 
      <strong>All Products:</strong>
        
@@ -78,25 +78,42 @@
           </div>
             </li>
 
-            
+
            <h1> Partner By ID: </h1>
       <br />
           <div v-if="product">
             Product
             <br />
-            id:{{product.id}}
+            id:{{product.Product.id}}
             <br />
-            Name:{{product.productName}}
+            Name:{{product.Product.productName}}
             <br />
-            Cost:{{product.productCost}}
+            Cost:{{product.Product.cost}}
             <br />
-            Description:{{product.productDescription}}
+            Description:{{product.Product.productDescription}}
             <br />
-            Partner ID:{{product.partnerID}}
+            Partner ID:{{product.Product.partnerId}}
         
           </div>
 
 
+ 
+      <br />
+          <div v-if="productNames">
+             <h1> Product by Name: </h1>
+            Product
+            <br />
+            id:{{productNames.id}}
+            <br />
+            Name:{{productNames.productName}}
+            <br />
+            Cost:{{productNames.cost}}
+            <br />
+            Description:{{productNames.productDescription}}
+            <br />
+            Partner ID:{{productNames.partnerId}}
+        
+          </div>
 
 
 <!-- POST/PUT/DELETE FOR AXIOS?? -->
@@ -123,6 +140,7 @@ export default {
       PartnerProducts: null,
       partnerID: null,
       productName: null, 
+      productNames: '',
       products: ''
       
     };
@@ -138,17 +156,19 @@ export default {
     },
     getProductByID(productID){  
      axios.get('http://localhost:8081/productservice/product/'+ this.productID)
-              .then(response => {this.product = console.log(response.data)});
+              .then(response => {this.product = response.data});
     //console.log(productID);
   },
   getProductByPartnerID(partnerID){  
      axios.get('http://localhost:8081/productservice/partnerproducts/'+ this.partnerID)
-              .then(response => {this.partnerProducts = console.log(response.data)});
+              .then(response => {this.partnerProducts = response.data.Product});
     //console.log(partnerID);
   },
+
   getProductByName(productName){  
      axios.get('http://localhost:8081/productservice/products/'+ this.productName)
-              .then(response => {this.productName = console.log(response.data)});
+              .then(response => {this.productNames = response.data.Product[0]
+              console.log(response.data.Product[0])});
     //console.log(ProductName);
 
 

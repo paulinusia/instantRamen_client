@@ -19,7 +19,10 @@
           </v-flex>
           <v-flex > 
             <v-btn @click="getPurchaseByID"> Get Purchase By ID </v-btn> 
+
+           
           </v-flex>
+          
       </v-card>
 
       <v-card>
@@ -52,11 +55,37 @@
 
 
 
-<!-- POST/PUT/DELETE FOR AXIOS?? -->
-<v-form>
 
-</v-form>
+   <div class="purchaseByID" v-if="purchase">
+     Purchase By ID Information
+  <br />id: {{purchase.Purchase.id}}<br />
+  <br /> Product id: {{purchase.Purchase.productID}}<br />
+  <br />Purchase Detail : {{purchase.Purchase.purchaseDetail}}<br />
+  <br />Purchase Status: {{purchase.Purchase.purchaseStatus}}<br />
+  <br />Address ID: {{purchase.Purchase.addressID}}<br />
+  <br />Purchase Owner: {{purchase.Purchase.purchaseOwner}}<br />
+    </div>    
+<!-- returns array of 0> -->
+{{product}}
+     <div class="purchaseaByProductID" v-if="product">
+     Purchase By ID Information
+  <br />id: {{product.Purchase.id}}<br />
+  <br /> Product id: {{product.Purchase.productID}}<br />
+  <br />Purchase Detail : {{product.Purchase.purchaseDetail}}<br />
+  <br />Purchase Status: {{product.Purchase.purchaseStatus}}<br />
+  <br />Address ID: {{product.Purchase.addressID}}<br />
+  <br />Purchase Owner: {{product.Purchase.purchaseOwner}}<br />
+    </div>    
 
+{{product}}
+{{CustomerID}}
+
+<div class="purchaseByCustomerID" v-if="purchases">
+     Purchase By ID Information
+  <br />id: {{purchases.Purchase}}<br />
+
+    </div>    
+ 
 </v-container>
     </div>
 </template>
@@ -76,6 +105,15 @@ export default {
       customerID: null,
       productID: null,
       purchases: null,
+      purchase: '',
+      product: '',
+      CustomerID: null,
+      ProductCustomerID: '',
+      purchaseDetail: '',
+      purchaseStatus: '',
+      addressID: '',
+      purchaseOwner: ''
+
 
       
     };
@@ -86,17 +124,25 @@ export default {
   methods: {
     getPurchaseByID(purchaseID){  
      axios.get('http://localhost:8081/purchaseservice/purchase/'+ this.purchaseID)
-              .then(response => {this.purchase = purchase});
+              .then(response => {this.purchase = response.data});
     //console.log(purchaseID);
   },
   getPurchaseByProductID(productID){  
      axios.get('http://localhost:8081/purchaseservice/productpurchases/'+ this.productID)
-              .then(response => {this.purchases = purchases});
+              .then(response => {this.product = response.data
+              console.log(response)});
     //console.log(partnerID);
   },
   getPurchaseByCustomerID(customerID){  
      axios.get('http://localhost:8081/purchaseservice/customerpurchases/'+ this.customerID)
-              .then(response => {this.purchases = purchases});
+              .then(response => {this.purchases = response.data,
+              console.log(response.data),
+              this.CustomerID = response.data.Purchase.id,
+              this.ProductCustomerID = response.data.Purchase.productID,
+              this.purchaseDetail = response.data.Purchase.purchaseDetail,
+              this.purchaseStatus = response.data.Purchase.purchaseStatus,
+              this.purchaseOwner = response.data.Purchase.purchaseStatus
+              });
     //console.log(customerID);
   },
   },
