@@ -33,26 +33,23 @@
       </v-card>
 
     </v-row>
-              <strong>All Customers:</strong>
-       
-          <ul v-for="customer in customers" :key="customer.id">
-          <br />
-         
-         <div v-if="customers">
-            Customer
-            <br />
-            id: {{customer.id}}
-            <br />
-            Name: {{customer.firstName}} {{customer.lastName}}
-            <br />
-            phone: {{customer.phoneNumber}}
-            <br />
-            email:{{customer.email}}
-          </div>
+              
 
-            </ul>
+<div class="getAllCustomers" v-if="customers">
+<strong>All Customers:</strong>
+     
+  <ul v-for="customer in customers" :key="customer.id">
+  <br/> <br/>
+  <br />ID: {{customer.id}}<br />
+  <br />Name: {{customer.firstName}} {{customer.lastName}}<br />
+  <br />Phone: {{customer.phoneNumber}}<br />
+  <br />email:{{customer.email}}<br />
   
-           <h1> Customer By ID: </h1>
+  </ul>
+    </div>    
+      
+
+           <strong> Customer By ID: </strong>
       <br />
           <div v-if="customer">
             Customer
@@ -95,11 +92,11 @@ export default {
       getCustomers() {
      axios
       .get('http://localhost:8081/customerservice/customers/')
-      .then(response => {this.customers = console.log(response.data)});
+      .then(response => {this.customers = response.data.Customer});
     },
     getCustomerByID(customerID){  
      axios.get('http://localhost:8081/customerservice/customer/'+ this.customerID)
-              .then(response => {this.customer = console.log(response.data)});
+              .then(response => {this.customer = response.data.Customer});
     //console.log(customerID);
     },
     createCustomer() {

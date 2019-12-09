@@ -67,19 +67,22 @@
 
 
 <!-- returns array of 0> -->
-{{product}}
-     <div class="purchaseaByProductID" v-if="product">
+{{products}}
+<div class="purchaseByProductID" v-if="products">
      Purchase By ID Information
-  <br />id: {{product.Purchase.id}}<br />
-  <br /> Product id: {{product.Purchase.productID}}<br />
-  <br />Purchase Detail : {{product.Purchase.purchaseDetail}}<br />
-  <br />Purchase Status: {{product.Purchase.purchaseStatus}}<br />
-  <br />Address ID: {{product.Purchase.addressID}}<br />
-  <br />Purchase Owner: {{product.Purchase.purchaseOwner}}<br />
+     
+  <ul v-for="purchase in purchases" :key="purchase.id">
+  <br/> <br/>
+  <br />id: {{purchase.id}}<br />
+  <br />address id: {{purchase.addressID}}<br />
+  <br />product id: {{purchase.productID}}<br />
+  <br />Purchase Detail: {{purchase.purchaseDetail}}<br />
+  <br />Purchase Status: {{purchase.purchaseStatus}}<br />
+  
+  </ul>
     </div>    
 
-{{product}}
-{{CustomerID}}
+
 
 <div class="purchaseByCustomerID" v-if="purchases">
      Purchase By ID Information
@@ -88,7 +91,7 @@
   <br/> <br/>
   <br />id: {{purchase.id}}<br />
   <br />address id: {{purchase.addressID}}<br />
-  <br />product id: {{purchase.oroductID}}<br />
+  <br />product id: {{purchase.productID}}<br />
   <br />Purchase Detail: {{purchase.purchaseDetail}}<br />
   <br />Purchase Status: {{purchase.purchaseStatus}}<br />
   
@@ -115,7 +118,7 @@ export default {
       productID: null,
       purchases: null,
       purchase: '',
-      product: '',
+      products: '',
       CustomerID: null,
       ProductCustomerID: '',
       purchaseDetail: '',
@@ -138,15 +141,14 @@ export default {
   },
   getPurchaseByProductID(productID){  
      axios.get('http://localhost:8081/purchaseservice/productpurchases/'+ this.productID)
-              .then(response => {this.product = response
+              .then(response => {this.product = response.data.Purchase,
               console.log(response)});
     //console.log(partnerID);
   },
   getPurchaseByCustomerID(customerID){  
      axios.get('http://localhost:8081/purchaseservice/customerpurchases/'+ this.customerID)
-              .then(response => {this.purchases = response.data.Purchase,
-              console.log(response.data.Purchase)
-             
+              .then(response => {this.purchases = response.data.Purchase
+
               });
     //console.log(customerID);
   },
