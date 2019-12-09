@@ -17,10 +17,9 @@
           <v-flex> 
             <p> Purchase info: {{purchaseID}} </p>  
           </v-flex>
+         
           <v-flex > 
             <v-btn @click="getPurchaseByID"> Get Purchase By ID </v-btn> 
-
-           
           </v-flex>
           
       </v-card>
@@ -52,7 +51,7 @@
    
 
     </v-row>
-<!--
+
    <div class="purchaseByID" v-if="purchase">
      Purchase By ID Information
   <br />id: {{purchase.Purchase.id}}<br />
@@ -63,7 +62,7 @@
   <br />Purchase Owner: {{purchase.Purchase.purchaseOwner}}<br />
     </div>    
 
--->
+
 
 
 <!-- returns array of 0> -->
@@ -113,21 +112,13 @@ export default {
   data() {
     return {
       isShowing: false,
-      purchaseID: null,
-      customerID: null,
-      productID: null,
+      customerID: '',
+      purchaseID: '',
+      productID: '',
       purchases: null,
       purchase: '',
       products: '',
-      CustomerID: null,
-      ProductCustomerID: '',
-      purchaseDetail: '',
-      purchaseStatus: '',
-      addressID: '',
-      purchaseOwner: ''
 
-
-      
     };
   },
   components: {
@@ -137,13 +128,14 @@ export default {
     getPurchaseByID(purchaseID){  
      axios.get('http://localhost:8081/purchaseservice/purchase/'+ this.purchaseID)
               .then(response => {this.purchase = response.data});
-    //console.log(purchaseID);
   },
   getPurchaseByProductID(productID){  
-     axios.get('http://localhost:8081/purchaseservice/productpurchases/'+ this.productID)
-              .then(response => {this.product = response.data.Purchase,
-              console.log(response)});
-    //console.log(partnerID);
+    
+     axios({
+       method: "get",
+       url: 'http://localhost:8081/purchaseservice/productpurchases/'+this.productID
+     }).then(response => {this.product = response.data,
+              console.log(response.data.Purchase)});
   },
   getPurchaseByCustomerID(customerID){  
      axios.get('http://localhost:8081/purchaseservice/customerpurchases/'+ this.customerID)

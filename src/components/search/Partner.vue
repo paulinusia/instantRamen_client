@@ -39,31 +39,25 @@
     
   <div>
    
-       <strong>All Partners:</strong>
        
-          <li v-for="Partner in partners" :key="Partner.id">
-          <br />
-         
-            Partner
-            <br />
-            id:{{Partner.id}}
-            <br />
-            Partner Name:{{Partner.partnerName}}
-            <br />
-            Partner Type:{{Partner.partnerType}}
-            <br />
-            Description:{{Partner.description}}
-            <br />
-            Phone Number :{{Partner.phoneNumber}}
-        
+<div class="allPartners" v-if="partners">
+     All Partners
+     
+  <ul v-for="partner in partners" :key="partner.description">
+  <br/> <br/>
+  <br />id: {{partner.id}}<br />
+  <br />Description: {{partner.description}}<br />
+  <br />Name: {{partner.partnerName}}<br />
+  <br />Type: {{partner.partnerType}}<br />
+  <br />Phone Number: {{partner.phoneNumber}}<br />
+  
+  </ul>
+    </div>    
   
 
 
-  </li>
 
-  
 
-{{partners}}
   </div>
     <h1> Partner By ID: </h1>
       <br />
@@ -82,18 +76,6 @@
         
           </div>
 
-
-          <div class="purchasebyCustomerID" v-if="purchases">
-     Purchase By Customer ID Information
-     <li v-for="purchase in purchases" :key="purchase.Purchase.id">
-  <br />id: {{purchase.Purchase.id}}<br />
-  <br /> Product id: {{purchase.Purchase.productID}}<br />
-  <br />Purchase Detail : {{purchase.Purchase.purchaseDetail}}<br />
-  <br />Purchase Status: {{purchase.Purchase.purchaseStatus}}<br />
-  <br />Address ID: {{purchase.Purchase.addressID}}<br />
-  <br />Purchase Owner: {{purchase.Purchase.purchaseOwner}}<br />
-  </li>
-    </div>    
 
 
 <!-- POST/PUT/DELETE FOR AXIOS?? -->
@@ -128,7 +110,7 @@ export default {
       getPartners() {
      axios
       .get('http://localhost:8081/partnerservice/partners/')
-      .then(response => {this.partners = response.data});
+      .then(response => {this.partners = response.data.Partner});
     },
     getPartnerByID(partnerID){  
      axios.get('http://localhost:8081/partnerservice/partner'+ this.partnerID)

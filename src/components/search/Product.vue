@@ -58,8 +58,7 @@
 
 
 
-     <strong>All Products:</strong>
-       {{products}}
+
           <ul v-for="product in products" :key="product.id">
           <br />
           <div v-if="product">
@@ -79,10 +78,10 @@
             </ul>
 
 
-           <h1> Partner By ID: </h1>
+         
       <br />
-          <div v-if="product">
-            Product
+          <div v-if="partnerProducts">
+            Products by partner ID
             <br />
             id:{{product.Product.id}}
             <br />
@@ -137,7 +136,7 @@ export default {
       isShowing: false,
       product: '',
       productID: null,
-      PartnerProducts: null,
+      partnerProducts: '',
       partnerID: null,
       productName: null, 
       productNames: '',
@@ -160,11 +159,14 @@ export default {
               .then(response => {this.product = response.data});
     //console.log(productID);
   },
+
+  /*
   getProductByPartnerID(partnerID){  
      axios.get('http://localhost:8081/productservice/partnerproducts/'+ this.partnerID)
-              .then(response => {this.partnerProducts = response.data.Product});
+              .then(response => {
+              console.log(response)});
     //console.log(partnerID);
-  },
+  }, */
 
   getProductByName(productName){  
      axios.get('http://localhost:8081/productservice/products/'+ this.productName)
