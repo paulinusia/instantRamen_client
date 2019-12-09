@@ -52,10 +52,7 @@
    
 
     </v-row>
-
-
-
-
+<!--
    <div class="purchaseByID" v-if="purchase">
      Purchase By ID Information
   <br />id: {{purchase.Purchase.id}}<br />
@@ -65,6 +62,10 @@
   <br />Address ID: {{purchase.Purchase.addressID}}<br />
   <br />Purchase Owner: {{purchase.Purchase.purchaseOwner}}<br />
     </div>    
+
+-->
+
+
 <!-- returns array of 0> -->
 {{product}}
      <div class="purchaseaByProductID" v-if="product">
@@ -82,8 +83,16 @@
 
 <div class="purchaseByCustomerID" v-if="purchases">
      Purchase By ID Information
-  <br />id: {{purchases.Purchase}}<br />
-
+     
+  <ul v-for="purchase in purchases" :key="purchase.id">
+  <br/> <br/>
+  <br />id: {{purchase.id}}<br />
+  <br />address id: {{purchase.addressID}}<br />
+  <br />product id: {{purchase.oroductID}}<br />
+  <br />Purchase Detail: {{purchase.purchaseDetail}}<br />
+  <br />Purchase Status: {{purchase.purchaseStatus}}<br />
+  
+  </ul>
     </div>    
  
 </v-container>
@@ -129,19 +138,15 @@ export default {
   },
   getPurchaseByProductID(productID){  
      axios.get('http://localhost:8081/purchaseservice/productpurchases/'+ this.productID)
-              .then(response => {this.product = response.data
+              .then(response => {this.product = response
               console.log(response)});
     //console.log(partnerID);
   },
   getPurchaseByCustomerID(customerID){  
      axios.get('http://localhost:8081/purchaseservice/customerpurchases/'+ this.customerID)
-              .then(response => {this.purchases = response.data,
-              console.log(response.data),
-              this.CustomerID = response.data.Purchase.id,
-              this.ProductCustomerID = response.data.Purchase.productID,
-              this.purchaseDetail = response.data.Purchase.purchaseDetail,
-              this.purchaseStatus = response.data.Purchase.purchaseStatus,
-              this.purchaseOwner = response.data.Purchase.purchaseStatus
+              .then(response => {this.purchases = response.data.Purchase,
+              console.log(response.data.Purchase)
+             
               });
     //console.log(customerID);
   },
