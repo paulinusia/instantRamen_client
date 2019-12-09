@@ -33,30 +33,41 @@
       </v-card>
 
     </v-row>
+              <strong>All Customer:</strong>
+       
+          <li v-for="customer in customers" :key="customer.id">
+          <br />
+         
+         <div v-if="customer">
+            Customer
+            <br />
+            id: {{customer.id}
+            <br />
+            Name: {{customer.firstName}} {{customer.lastName}}
+            <br />
+            phone: {{customer.phoneNumber}}
+            <br />
+            email:{{customer.email}}
+          </div>
+
+            </li>
   
            <h1> Customer By ID: </h1>
       <br />
-          <div v-if="Customer">
+          <div v-if="customer">
             Customer
             <br />
-            id:{{product.id}}
+            id: {{customer.id}
             <br />
-            Name:{{product.productName}}
+            Name: {{customer.firstName}} {{customer.lastName}}
             <br />
-            Cost:{{product.productCost}}
+            phone: {{customer.phoneNumber}}
             <br />
-            Description:{{product.productDescription}}
-            <br />
-            Partner ID:{{product.partnerID}}
-        
+            email:{{customer.email}}
           </div>
 
 
 
-<!-- POST/PUT/DELETE FOR AXIOS?? -->
-<v-form>
-  <input v-model="message" placeholder="FirstName">
-</v-form>
 
 </v-container>
     </div>
