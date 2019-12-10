@@ -17,6 +17,11 @@
       <v-text-field v-model="updatedPhoneNumber" label="Updated Phone Number..."></v-text-field>
       <v-btn outlined @click="updateCustomer">Update Customer</v-btn>
     </div>
+    <!--
+    <br />
+    <div>
+      <v-btn class="deleteButton" @click="deleteCustomer">Delete Customer</v-btn>
+    </div>-->
   </div>
 </template>
 
@@ -47,7 +52,30 @@ export default {
           this.customer = response.data.Customer;
         });
     },
+    /* deleteCustomer() {
+      console.log("Deleting customer...");
+      let currentObj = this;
+      let deleteCustomerLink = "";
+      for (var i = 0; i < currentObj.customer.links.length; i++) {
+        if (currentObj.customer.links[i].rel === "deleteCustomer") {
+          deleteCustomerLink = currentObj.customer.links[i].uri;
+          break;
+        }
+      }
+      console.log("update customer link: " + deleteCustomerLink);
+      if (deleteCustomerLink.length < 1) return null;
+      axios
+        .delete(
+          "http://localhost:8081"
+        )
+        .then(response => {
+          console.log("deleteCustomer Response:");
+          console.log(response);
+          this.$router.push("/customers");
+        });
+    }, */
     updateCustomer() {
+      console.log("Updating customer...");
       let currentObj = this;
       let updateCustomerLink = "";
       for (var i = 0; i < currentObj.customer.links.length; i++) {
@@ -94,4 +122,9 @@ export default {
   margin-left: auto;
   margin-right: auto;
 }
+/*
+.deleteButton {
+  background-color: red !important;
+  color: white !important;
+} */
 </style>
