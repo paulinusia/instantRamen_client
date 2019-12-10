@@ -29,7 +29,7 @@ const routes = [
     path: '/customer/:customerID',
     name: 'customer',
     props: true,
-    component: () => import('../views/CustomerIndividual.vue')
+    component: () => import('../views/CustomerProfile.vue')
   },
   {
     path: '/search',

@@ -29,7 +29,9 @@ export default {
   methods: {
     getCustomerByID() {
       axios
-        .get("http://localhost:8081/customerservice/customer/106")
+        .get(
+          "http://localhost:8081/customerservice/customer/" + this.customerID
+        )
         .then(response => {
           console.log("getCustomerById Response:");
           console.log(response);

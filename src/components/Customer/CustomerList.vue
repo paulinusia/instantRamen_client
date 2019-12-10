@@ -2,9 +2,33 @@
   <div>
     <h2>Customer List</h2>
     <br />
-    <v-data-table :headers="headers" :items="customers" :items-per-page="5" class="elevation-1"></v-data-table>
+    <div class="container">
+      <table id="customerTable">
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+        </tr>
+        <router-link
+          class="routerLink"
+          v-for="customer in customers"
+          :key="customer.id"
+          :to="{ name: 'customer', params: { customerID: customer.id } }"
+        >
+          <tr class="customerRow">
+            <td>{{customer.id}}</td>
+            <td>{{customer.firstName}}</td>
+            <td>{{customer.lastName}}</td>
+            <td>{{customer.email}}</td>
+            <td>{{customer.phoneNumber}}</td>
+          </tr>
+        </router-link>
+      </table>
+    </div>
     <!-- <v-btn link :to="{ name: 'customer', params: [106]}">Individual Customer</v-btn> -->
-    <router-link :to="{ name: 'customer', params: { customerID: 106 } }">Individual Customer</router-link>
+    <!-- <router-link :to="{ name: 'customer', params: { customerID: 106 } }">Individual Customer</router-link> -->
   </div>
 </template>
 
@@ -37,4 +61,33 @@ export default {
 </script>
 
 <style scoped>
+tr {
+  display: flex;
+  justify-content: space-between;
+}
+th {
+  width: 15vw;
+  text-align: left;
+}
+td {
+  width: 15vw;
+  text-align: left;
+}
+.container {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
+#customerTable {
+  width: 95vw;
+}
+.routerLink {
+  color: black;
+  text-decoration: none;
+}
+.customerRow:hover {
+  background-color: #999;
+}
 </style>
