@@ -16,6 +16,11 @@ const routes = [
     component: () => import('../views/CustomerAll.vue')
   },
   {
+    path: '/partners',
+    name: 'partners',
+    component: () => import('../views/PartnerAll.vue')
+  },
+  {
     path: '/customer/:customerID',
     name: 'customer',
     component: () => import('../views/CustomerIndividual.vue')
