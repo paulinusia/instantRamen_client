@@ -66,11 +66,11 @@
 
 
 <!-- returns array of 0> -->
-{{products}}
-<div class="purchaseByProductID" v-if="products">
-     Purchase By ID Information
+
+<div class="purchaseByProductID" v-if="purchasesID">
+     Purchase By Product ID Information
      
-  <ul v-for="purchase in purchases" :key="purchase.id">
+  <ul v-for="purchase in purchasesID" :key="purchase.id">
   <br/> <br/>
   <br />id: {{purchase.id}}<br />
   <br />address id: {{purchase.addressID}}<br />
@@ -82,9 +82,8 @@
     </div>    
 
 
-
 <div class="purchaseByCustomerID" v-if="purchases">
-     Purchase By ID Information
+     Purchase By Customer ID Information
      
   <ul v-for="purchase in purchases" :key="purchase.id">
   <br/> <br/>
@@ -118,6 +117,7 @@ export default {
       purchases: null,
       purchase: '',
       products: '',
+      purchasesID: '',
 
     };
   },
@@ -130,9 +130,8 @@ export default {
               .then(response => {this.purchase = response.data});
   },
   getPurchaseByProductID(productID){  
-      axios.get('http://localhost:8081/purchaseservice/customerpurchases/'+ this.productID)
-              .then(response => {this.purchases = response.data.Purchase,
-              console.log(response.data)
+      axios.get('http://localhost:8081/purchaseservice/productpurchases/'+ this.productID)
+              .then(response => {this.purchasesID = response.data.Purchase
               });
   },
   getPurchaseByCustomerID(customerID){  
