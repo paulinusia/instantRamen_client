@@ -3,6 +3,7 @@
     <h2>Partner List</h2>
     <br />
     <v-data-table :headers="headers" :items="partners" :items-per-page="5" class="elevation-1"></v-data-table>
+    <router-link :to="{ name: 'partner', params: { partnerID: 107 } }">Individual Partner</router-link>
   </div>
 </template>
 

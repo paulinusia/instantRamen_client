@@ -21,6 +21,11 @@ const routes = [
     component: () => import('../views/PartnerAll.vue')
   },
   {
+    path: '/products',
+    name: 'products',
+    component: () => import('../views/ProductAll.vue')
+  },
+  {
     path: '/customer/:customerID',
     name: 'customer',
     props: true,
