@@ -32,6 +32,13 @@
       </tr>
     </table>
     <br />
+    <br />
+    <router-link
+      class="routerLink"
+      :to="{ name: 'buy', params: { productID: product.id } }"
+    >Buy Product</router-link>
+    <br />
+    <br />
   </div>
 </template>
 
@@ -51,6 +58,9 @@ export default {
     };
   },
   methods: {
+    buyProduct() {
+      console.log("buying product...");
+    },
     getProductByID() {
       axios
         .get("http://localhost:8081/productservice/product/" + this.productID)
@@ -92,7 +102,6 @@ export default {
   margin-left: auto;
   margin-right: auto;
 }
-
 tr {
   display: flex;
   justify-content: space-between;

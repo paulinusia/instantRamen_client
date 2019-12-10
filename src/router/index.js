@@ -49,8 +49,9 @@ const routes = [
     //component: () => import('../views/Search.vue')
   //},
   {
-    path: '/buy',
+    path: '/buy:productID',
     name: 'buy',
+    props: true,
     component: () => import('../views/Buy.vue')
   },
   {

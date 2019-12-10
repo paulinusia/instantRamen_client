@@ -1,17 +1,15 @@
 <template>
   <div>
-    <div class="row justify-content-center">
-      <div class="col-md-8">
+    <div>
+      <div>
+        <br />
         <v-form class="form" @submit="formSubmit">
-          <strong>Product ID</strong>
-
-          <v-text-field v-model="fk_product" label="ID of product you want to buy" required></v-text-field>
-
           <strong>Purchase Detail:</strong>
           <v-text-field v-model="purchasedetail" label="Purchase Details" required></v-text-field>
 
           <v-btn x-large color="success" type="submit" dark>Submit</v-btn>
         </v-form>
+        <br />
         <div class="results">
           <strong>Ordering Result:</strong>
           <br />
@@ -31,15 +29,13 @@
             purchaseOwner:{{output.purchaseOwner}}
             <br />
             <v-text-field v-model="updatedDetail" label="Updated purchase detail..."></v-text-field>
-            <button v-if="updatedDetail" @click="updatePurchaseDetail">Update Purchase Detail</button>
+            <v-btn outline @click="updatePurchaseDetail">Update Purchase Detail</v-btn>
             <br />
             <v-text-field v-model="updatedStatus" label="Updated purchase status..."></v-text-field>
-            <button v-if="updatedStatus" @click="updatePurchaseStatus">Update Purchase Status</button>
+            <v-btn outline @click="updatePurchaseStatus">Update Purchase Status</v-btn>
           </div>
           <br />
-          <strong>Product Info:</strong>
           <br />
-          <div>{{product}}</div>
         </div>
       </div>
     </div>
@@ -56,7 +52,6 @@ export default {
       fk_address: 101,
       purchasestatus: "Ordered",
       purchasedetail: "",
-      fk_product: "",
       output: "",
       product: "",
       updatedStatus: undefined,
@@ -72,7 +67,7 @@ export default {
           Purchase: {
             purchaseDetail: this.purchasedetail,
             purchaseStatus: this.purchasestatus,
-            productID: this.fk_product,
+            productID: this.productID,
             purchasePaymentID: this.fk_purchase_payment,
             purchaseOwner: this.fk_purchase_owner,
             addressID: this.fk_address
@@ -82,6 +77,7 @@ export default {
           console.log(response);
           currentObj.output = response.data.Purchase;
           console.log(currentObj.output);
+          currentObj.purchasedetail = "";
         })
         .catch(function(error) {
           currentObj.output = error;
@@ -147,13 +143,7 @@ export default {
   mounted() {
     // console.log("loaded");
   },
-  created() {
-    // axios
-    //   .get("http://localhost:8081/productservice/products/")
-    //   .then(response => {
-    //     this.product = console.log(response);
-    //   });
-  }
+  props: ["productID"]
 };
 </script>
 
@@ -165,11 +155,11 @@ export default {
   border-style: dotted;
   border-width: 1px;
   padding: 5%;
-  position: abosolute;
-  margin-left: 35%;
 }
 
 .results {
-  margin-top: 10%;
+  width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
