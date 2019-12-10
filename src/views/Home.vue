@@ -38,13 +38,20 @@
         <v-btn x-large color="success" type="submit" dark>Submit</v-btn>
       </v-form>
       <br />
-      <div class="results">
+      <div v-if="customer" class="results">
         <strong>New Customer Result:</strong>
-        <pre>
-                        {{output}}
-                        </pre>
-        <!--<p>Message is: {{ message }}</p>-->
+        <p>
+          ID: {{customer.id}}
+          <br />
+          Name: {{customer.firstName}} {{customer.lastName}}
+          <br />
+          Phone: {{customer.phoneNumber}}
+          <br />
+          email:{{customer.email}}
+        </p>
       </div>
+      <br />
+      <br />
     </div>
   </div>
 </template>
@@ -61,16 +68,17 @@ export default {
   },
   data() {
     return {
+      id: "",
       firstName: "",
       lastName: "",
       phoneNumber: "",
       email: "",
-      output: ""
+      customer: undefined
     };
   },
   methods: {
     formSubmit(e) {
-      window.alert("test");
+      console.log("creating customer...");
       e.preventDefault();
       let currentObj = this;
       axios
@@ -83,11 +91,18 @@ export default {
           }
         })
         .then(function(response) {
-          currentObj.output = response.data;
+          console.log("Created Customer:");
+          console.log(response.data.Customer);
+          currentObj.customer = response.data.Customer;
         })
         .catch(function(error) {
-          currentObj.output = error;
+          currentObj.customer = error;
         });
+      currentObj.id = "";
+      currentObj.firstName = "";
+      currentObj.lastName = "";
+      currentObj.email = "";
+      currentObj.phoneNumber = "";
     }
   }
 };
