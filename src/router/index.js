@@ -38,6 +38,12 @@ const routes = [
     component: () => import('../views/PartnerProfile.vue')
   },
   {
+    path: '/product/:productID',
+    name: 'product',
+    props: true,
+    component: () => import('../views/ProductProfile.vue')
+  },
+  {
     path: '/search',
     name: 'search',
     component: () => import('../views/Search.vue')
