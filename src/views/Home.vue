@@ -49,6 +49,11 @@
           <br />
           email:{{customer.email}}
         </p>
+        <br />
+        <router-link
+          class="routerLink"
+          :to="{ name: 'customer', params: { customerID: customer.id } }"
+        >View Customer</router-link>
       </div>
       <br />
       <br />
@@ -121,5 +126,13 @@ export default {
 .home {
   margin-left: auto;
   margin-right: auto;
+}
+.routerLink {
+  text-decoration: none;
+  color: black;
+  border-style: solid;
+  border-width: 1px;
+  padding: 1vh;
+  border-radius: 5px;
 }
 </style>
