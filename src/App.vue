@@ -5,7 +5,6 @@
       <router-link to="/customers" exact>Customers</router-link> |
       <router-link to="/partners" exact>Partners</router-link> |
       <router-link to="/products" exact>Products</router-link> |
-      <router-link to="/search" exact >Search Resources</router-link> | 
       <router-link to="/buy" exact>Buy Products</router-link>
        
 

@@ -2,6 +2,12 @@
   <div>
     <h2>Product List</h2>
     <br />
+    <h4> Would you like to search for a product? </h4>
+    <p> </p>
+    <router-link to="/search/product" exact>Search for Products</router-link>
+    <!--<v-btn outlined>Search For Product</v-btn>-->
+    <br />
+    <br />
     <div class="container">
       <table id="productTable">
         <tr>

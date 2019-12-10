@@ -4,36 +4,9 @@
 
 <Nav />
 <v-container>
- <!-- GET METHODS FOR PRODUCT -->
     <v-row 
     justify="space-around"
   class="row">
-
-      <v-card>
-          <v-flex>
-              <input v-model="productID" placeholder="enter Product ID">
-          </v-flex>
-
-          <v-flex> 
-            <p> Product info: {{productID}} </p>  
-          </v-flex>
-          <v-flex > 
-            <v-btn @click="getProductByID"> Get Product By ID </v-btn> 
-          </v-flex>
-      </v-card>
-
-      <v-card>
-          <v-flex>
-            <input v-model="partnerID" placeholder="enter partner ID">
-          </v-flex>
-          <v-flex>
-              <p> partner info: {{partnerID}} </p>
-          <v-flex>
-            <v-btn @click="getProductByPartnerID"> Return products by partner ID </v-btn>
-          </v-flex>
-          </v-flex>
-      </v-card>
-
       <v-card>
         <v-flex>
           <input v-model="productName" placeholder="enter name of product">
@@ -43,75 +16,36 @@
        
         </v-flex>
         <v-flex>
-          <v-btn @click="getProductByName"> Return products by Name </v-btn>
+          <v-btn @click="getProductByName"> Return Products by Name </v-btn>
         </v-flex>
       </v-card>
-
-      <v-card >
-       <v-flex>
-         <v-btn @click="getProducts"> Get ALL Products </v-btn>
-        </v-flex>
-        
-      </v-card>
-
     </v-row>
-
-
-
-
-          <ul v-for="product in products" :key="product.id">
-          <br />
-          <div v-if="product">
-            Product
-            <br />
-            id:{{product.id}}
-            <br />
-            Name:{{product.productName}}
-            <br />
-            Cost :{{product.cost}}
-            <br />
-            Description:{{product.productDescription}}
-            <br />
-            Partner ID :{{product.partnerId}}
-            
-          </div>
-            </ul>
-
-
-     
-     <br />
-        <div class="getproductsbypartner" v-if="partnerProducts">
-<strong>All Customers:</strong>
-     
+<!--<div class="getproductsbypartner" v-if="partnerProducts">
+<strong>All Customers:</strong>  
   <ul v-for="product in partnerProducts" :key="product.id">
-  <br/> <br/>
-  <br />ID: {{product.id}}<br />
-  <br />Name: {{product.productName}} <br />
-   <br /> Cost :{{product.cost}} <br />
+    <br/> <br/>
+    <br />ID: {{product.id}}<br />
+    <br />Name: {{product.productName}} <br />
+    <br /> Cost :{{product.cost}} <br />
     <br />Description:{{product.productDescription}} <br />
- <br /> Partner ID :{{product.partnerId}} <br />
+    <br /> Partner ID :{{product.partnerId}} <br />
   </ul>
-    </div>    
+</div> -->   
  
       <br />
           <div v-if="productNames">
              <h1> Product by Name: </h1>
-            Product
+            Product ID: {{productNames.id}}
             <br />
-            id:{{productNames.id}}
+            Name: {{productNames.productName}}
             <br />
-            Name:{{productNames.productName}}
+            Cost: {{productNames.cost}}
             <br />
-            Cost:{{productNames.cost}}
+            Description: {{productNames.productDescription}}
             <br />
-            Description:{{productNames.productDescription}}
-            <br />
-            Partner ID:{{productNames.partnerId}}
+            Partner ID: {{productNames.partnerId}}
         
           </div>
-
-
-<!-- POST/PUT/DELETE FOR AXIOS?? -->
 <v-form>
 
 </v-form>
@@ -153,29 +87,17 @@ export default {
      axios.get('http://localhost:8081/productservice/product/'+ this.productID)
               .then(response => {this.product = response.data
               console.log(response)});
-    //console.log(productID);
-  },
-
-  
-  getProductByPartnerID(partnerID){  
+    },
+    getProductByPartnerID(partnerID){  
      axios.get('http://localhost:8081/productservice/partnerproducts/'+ this.partnerID)
               .then(response => {this.partnerProducts = response.data.Product})
-  }, 
-
-  getProductByName(productName){  
+    }, 
+    getProductByName(productName){  
      axios.get('http://localhost:8081/productservice/products/'+ this.productName)
               .then(response => {this.productNames = response.data.Product[0]
               console.log(response.data.Product[0])});
-    //console.log(ProductName);
-
-
-},
-
-
-
-
-
-},
+    },
+  },
 }
 
 </script>
