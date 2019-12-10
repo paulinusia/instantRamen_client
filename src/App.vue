@@ -1,23 +1,20 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/" exact>Home</router-link> | 
-      <router-link to="/customers" exact>Customers</router-link> |
-      <router-link to="/partners" exact>Partners</router-link> |
-      <router-link to="/products" exact>Products</router-link> |
-      <router-link to="/buy" exact>Buy Products</router-link>
-       
-
+      <router-link to="/" exact>Home</router-link>|
+      <router-link to="/customers" exact>Customers</router-link>|
+      <router-link to="/partners" exact>Partners</router-link>|
+      <router-link to="/products" exact>Products</router-link>
     </div>
-   <keep-alive>
-    <router-view></router-view>
-  </keep-alive>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
