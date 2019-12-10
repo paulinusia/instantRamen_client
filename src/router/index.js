@@ -32,6 +32,12 @@ const routes = [
     component: () => import('../views/CustomerProfile.vue')
   },
   {
+    path: '/partner/:partnerID',
+    name: 'partner',
+    props: true,
+    component: () => import('../views/PartnerProfile.vue')
+  },
+  {
     path: '/search',
     name: 'search',
     component: () => import('../views/Search.vue')
