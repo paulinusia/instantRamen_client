@@ -59,6 +59,8 @@
     <div>
       <v-btn class="createButton" @click="createCustomer">Create Customer</v-btn>
     </div>
+    <br />
+    <br />
     <!--
     <br />
     <div>
