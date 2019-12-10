@@ -3,7 +3,8 @@
     <h2>Customer List</h2>
     <br />
     <v-data-table :headers="headers" :items="customers" :items-per-page="5" class="elevation-1"></v-data-table>
-    <v-btn link :to="{ name: 'customer', params: { customerID: 106 }}">Individual Customer</v-btn>
+    <!-- <v-btn link :to="{ name: 'customer', params: [106]}">Individual Customer</v-btn> -->
+    <router-link :to="{ name: 'customer', params: { customerID: 106 } }">Individual Customer</router-link>
   </div>
 </template>
 
