@@ -11,6 +11,16 @@ const routes = [
     component: Home
   },
   {
+    path: '/customers',
+    name: 'customers',
+    component: () => import('../views/CustomerAll.vue')
+  },
+  {
+    path: '/customer/:customerID',
+    name: 'customer',
+    component: () => import('../views/CustomerIndividual.vue')
+  },
+  {
     path: '/search',
     name: 'search',
     component: () => import('../views/Search.vue')
@@ -37,7 +47,7 @@ const routes = [
   },
   {
     path: '/search/customer',
-    name: 'customer',
+    name: 'searchcustomer',
     component: () => import('../components/search/Customer.vue')
   },
   {
@@ -45,7 +55,7 @@ const routes = [
     name: 'partner',
     component: () => import('../components/search/Partner.vue')
   },
- 
+
 ]
 
 
