@@ -1,30 +1,43 @@
 <template>
-  <h3>Individual Customer Info</h3>
+  <div>
+    <h3>Individual Customer Info</h3>
+    <br />
+    ID: {{customer.id}}
+    <br />
+    Name: {{customer.firstName}} {{customer.lastName}}
+    <br />
+    Phone: {{customer.phoneNumber}}
+    <br />
+    email:{{customer.email}}
+  </div>
 </template>
 
 <script>
 import axios from "axios";
 export default {
-  created() {
+  mounted() {
     console.log("created...");
     console.log("customerID:");
     console.log(this.customerID);
-    // axios
-    //   .get("http://localhost:8081/customerservice/customer/106")
-    //   .then(response => {
-    //     console.log("getCustomerById Response:");
-    //     console.log(response);
-    //     this.customer = response.data.Customer;
-    //   });
+    this.getCustomerByID();
   },
   data() {
     return {
       customer: undefined
     };
   },
-  props: {
-    customerID: Number
-  }
+  methods: {
+    getCustomerByID() {
+      axios
+        .get("http://localhost:8081/customerservice/customer/106")
+        .then(response => {
+          console.log("getCustomerById Response:");
+          console.log(response);
+          this.customer = response.data.Customer;
+        });
+    }
+  },
+  props: ["customerID"]
 };
 </script>
 
