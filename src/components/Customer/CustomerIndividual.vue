@@ -17,6 +17,10 @@
       <v-text-field v-model="updatedPhoneNumber" label="Updated Phone Number..."></v-text-field>
       <v-btn outlined @click="updateCustomer">Update Customer</v-btn>
     </div>
+    <br />
+    <div>
+      <v-btn class="createButton" @click="createCustomer">Create Customer</v-btn>
+    </div>
     <!--
     <br />
     <div>
@@ -41,6 +45,9 @@ export default {
     };
   },
   methods: {
+    createCustomer() {
+      this.$router.push("/");
+    },
     getCustomerByID() {
       axios
         .get(
@@ -121,6 +128,10 @@ export default {
   width: 40vw;
   margin-left: auto;
   margin-right: auto;
+}
+.createButton {
+  background-color: green !important;
+  color: white !important;
 }
 /*
 .deleteButton {
