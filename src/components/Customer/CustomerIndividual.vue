@@ -10,7 +10,45 @@
       <br />
       email:{{customer.email}}
     </p>
+    <br />
+    <strong>Payments:</strong>
+    <table id="paymentTable">
+      <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Card Number</th>
+        <th>Expiration Date</th>
+        <th>Security Code</th>
+      </tr>
+      <tr v-for="payment in payments" :key="payment.id">
+        <td>{{payment.id}}</td>
+        <td>{{payment.type}}</td>
+        <td>{{payment.cardNumber}}</td>
+        <td>{{payment.expirationDate}}</td>
+        <td>{{payment.securityCode}}</td>
+      </tr>
+    </table>
+    <br />
+    <strong>Addresses:</strong>
+    <table id="addressTable">
+      <tr>
+        <th>ID</th>
+        <th>Street Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+      </tr>
+      <tr v-for="address in addresses" :key="address.id">
+        <td>{{address.id}}</td>
+        <td>{{address.streetAddress}}</td>
+        <td>{{address.city}}</td>
+        <td>{{address.state}}</td>
+        <td>{{address.zip}}</td>
+      </tr>
+    </table>
+    <br />
     <div id="updateCustomerForm">
+      <strong>Update Customer Info:</strong>
       <v-text-field v-model="updatedFirstName" label="Updated First Name..."></v-text-field>
       <v-text-field v-model="updatedLastName" label="Updated Last Name..."></v-text-field>
       <v-text-field v-model="updatedEmail" label="Updated Email..."></v-text-field>
@@ -41,12 +79,58 @@ export default {
       updatedFirstName: "",
       updatedLastName: "",
       updatedEmail: "",
-      updatedPhoneNumber: ""
+      updatedPhoneNumber: "",
+      payments: undefined,
+      addresses: undefined
     };
   },
   methods: {
     createCustomer() {
       this.$router.push("/");
+    },
+    getCustomerPayments() {
+      console.log("getting customer payments...");
+      let currentObj = this;
+      let getPaymentsForCustomerLink = "";
+      for (var i = 0; i < currentObj.customer.links.length; i++) {
+        if (currentObj.customer.links[i].rel === "getPaymentsForCustomer") {
+          getPaymentsForCustomerLink = currentObj.customer.links[i].uri;
+          break;
+        }
+      }
+      console.log(
+        "get paymetns for customer link: " + getPaymentsForCustomerLink
+      );
+      if (getPaymentsForCustomerLink.length < 1) return null;
+      axios
+        .get("http://localhost:8081" + getPaymentsForCustomerLink)
+        .then(response => {
+          console.log("getCustomerPayments Response:");
+          console.log(response);
+          this.payments = response.data.Payment;
+        });
+    },
+    getCustomerAddresses() {
+      console.log("getting customer addresses...");
+      let currentObj = this;
+      let getAddressesForCustomerLink = "";
+      for (var i = 0; i < currentObj.customer.links.length; i++) {
+        if (currentObj.customer.links[i].rel === "getAddressesForCustomer") {
+          getAddressesForCustomerLink = currentObj.customer.links[i].uri;
+          break;
+        }
+      }
+      console.log(
+        "get addresses for customer link: " + getAddressesForCustomerLink
+      );
+      if (getAddressesForCustomerLink.length < 1) return null;
+      axios
+        .get("http://localhost:8081" + getAddressesForCustomerLink)
+        .then(response => {
+          console.log("getCustomerAddresses Response:");
+          console.log(response);
+          this.addresses = response.data.Address;
+        });
     },
     getCustomerByID() {
       axios
@@ -57,6 +141,8 @@ export default {
           console.log("getCustomerById Response:");
           console.log(response);
           this.customer = response.data.Customer;
+          this.getCustomerPayments();
+          this.getCustomerAddresses();
         });
     },
     /* deleteCustomer() {
@@ -132,6 +218,28 @@ export default {
 .createButton {
   background-color: green !important;
   color: white !important;
+}
+tr {
+  display: flex;
+  justify-content: space-between;
+}
+th {
+  width: 15vw;
+  text-align: left;
+}
+td {
+  width: 15vw;
+  text-align: left;
+}
+#paymentTable {
+  width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+#addressTable {
+  width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 /*
 .deleteButton {
